@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Guess the Number!</h1>
+
+    <div id="gamePanel">
+        <input id="numberInput" type="number" min="0">
+        <button id="guessBtn">Guess</button>
+    </div>
+
+    <label id="statusLbl" class="gamePanel">Type your guess in the box!</label>
+
+    <div id="difficultyPanel">
+        <h2>Choose Number Range</h2>
+        <button id="zeroToHundBtn">0 - 100</button>
+        <button id="zeroToTwoHundBtn">0 - 200</button>
+        <button id="zeroToFiveHundBtn">0 - 500</button>
+        <button id="zeroToThousandBtn">0 - 1000</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

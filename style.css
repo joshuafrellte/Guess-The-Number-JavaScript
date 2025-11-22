@@ -1,0 +1,45 @@
+body {
+    font-family: Helvetica, 'Segoe UI', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+#gamePanel {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10%;
+}
+
+#numberInput {
+    font-size: 2em;
+    text-align: center;
+}
+
+#guessBtn {
+    font-size: 2em;
+}
+
+#statusLbl {
+    display: block;
+    text-align: center;
+    margin: 25px 0 50px 0;
+    font-weight: bolder;
+}
+
+#difficultyPanel button {
+    font-size: 1em;
+}
+
+#difficultyPanel {
+    text-align: center;
+}
+
+@media screen and (min-width: 570px) {
+    #gamePanel {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
