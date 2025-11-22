@@ -59,13 +59,14 @@ function displayVictoryStatus() {
     statusLbl.style.color = "green";
     statusLbl.style.animation = "boing 0.5s ease-in-out 10 alternate";
     numberInput.style.color = "green";
-    
+
 }
 
 function resetGame() {
     setTimeout(() => {
         statusLbl.textContent = defaultStatus;
         statusLbl.style.color = "black";
+        numberInput.style.color = "black";
         clearGuess();
     }, 5000);
 }
