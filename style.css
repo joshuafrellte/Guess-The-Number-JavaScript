@@ -27,11 +27,29 @@ h1 {
     text-align: center;
     margin: 25px 0 50px 0;
     font-weight: bolder;
+    transition: 0.33s ease;
+}
+
+@keyframes boing {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
 }
 
 #difficultyPanel button {
     font-size: 1em;
+    color: white;
+    background-color: rgba(60, 138, 255, 0.599);
+    transition: 0.15s ease;
 }
+
+#difficultyPanel button.active {
+    background-color: rgb(60, 138, 255);
+}
+
 
 #difficultyPanel {
     text-align: center;
