@@ -3,16 +3,21 @@ const guessBtn = document.getElementById('guessBtn');
 const statusLbl = document.getElementById('statusLbl');
 
 const zeroToHundBtn = document.getElementById('zeroToHundBtn');
-const zeroToTwoHundBtn = document.getElementById('zeroToTwoHundBtn');
 const zeroToFiveHundBtn = document.getElementById('zeroToFiveHundBtn');
 const zeroToThousandBtn = document.getElementById('zeroToThousandBtn');
+const zeroToTenThousandBtn = document.getElementById('zeroToTenThousandBtn');
 
 const defaultStatus = statusLbl.textContent;
 
-let randomNumber = Math.floor(Math.random() * 100);
+let currentMax = 100;
+let randomNumber = generateRandom(currentMax);
 console.log(randomNumber);
 
 darkenActiveButton(zeroToHundBtn);
+
+function generateRandom(max) {
+    return Math.floor(Math.random() * max);
+}
 
 guessBtn.onclick = function() {
     guess = numberInput.value;
@@ -52,12 +57,15 @@ function processGuess(guess) {
         resetGame();
         displayVictoryStatus();
     }
+    if (guess == '') {
+        statusLbl.textContent = "Enter a guess first!";
+    }
 }
 
 function displayVictoryStatus() {
     statusLbl.textContent = "YOU GOT IT!";
     statusLbl.style.color = "green";
-    statusLbl.style.animation = "boing 0.5s ease-in-out 10 alternate";
+    statusLbl.style.animation = "boing 0.5s ease-in-out infinite alternate";
     numberInput.style.color = "green";
 
 }
@@ -67,6 +75,9 @@ function resetGame() {
         statusLbl.textContent = defaultStatus;
         statusLbl.style.color = "black";
         numberInput.style.color = "black";
+        statusLbl.style.animation = "none";
+        randomNumber = generateRandom(currentMax);
+        console.log(randomNumber);
         clearGuess();
     }, 5000);
 }
@@ -75,37 +86,41 @@ function darkenActiveButton(btn) {
     let buttons = document.querySelectorAll('#difficultyPanel button');
     buttons.forEach(function(button) {
         button.classList.remove('active');
-        
     });
     btn.classList.add('active');
-    console.log(btn.className);
 }
 
 zeroToHundBtn.onclick = function() {
-    randomNumber = Math.floor(Math.random() * 100);
-    clearGuess();
-    console.log(randomNumber);
-    darkenActiveButton(this);
-}
-
-zeroToTwoHundBtn.onclick = function() {
-    randomNumber = Math.floor(Math.random() * 200);
+    currentMax = 100;
+    randomNumber = generateRandom(currentMax);
     clearGuess();
     console.log(randomNumber);
     darkenActiveButton(this);
 }
 
 zeroToFiveHundBtn.onclick = function() {
-    randomNumber = Math.floor(Math.random() * 500);
+    currentMax = 500;
+    randomNumber = generateRandom(currentMax);
     clearGuess();
     console.log(randomNumber);
     darkenActiveButton(this);
 }
 
 zeroToThousandBtn.onclick = function() {
-    randomNumber = Math.floor(Math.random() * 1000);
+    currentMax = 1000;
+    randomNumber = generateRandom(currentMax);
     clearGuess();
     console.log(randomNumber);
     darkenActiveButton(this);
 }
 
+zeroToTenThousandBtn.onclick = function() {
+    currentMax = 10000;
+    randomNumber = generateRandom(currentMax);
+    clearGuess();
+    console.log(randomNumber);
+    darkenActiveButton(this);
+}
+
+// fix victory animatin timings
+// add attempt counter
