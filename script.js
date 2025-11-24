@@ -9,6 +9,8 @@ const zeroToTenThousandBtn = document.getElementById('zeroToTenThousandBtn');
 
 const defaultStatus = statusLbl.textContent;
 
+let attempts = 0;
+
 let currentMax = 100;
 let randomNumber = generateRandom(currentMax);
 console.log(randomNumber);
@@ -60,13 +62,15 @@ function processGuess(guess) {
     if (guess == '') {
         statusLbl.textContent = "Enter a guess first!";
     }
+    attempts++;
 }
 
 function displayVictoryStatus() {
-    statusLbl.textContent = "YOU GOT IT!";
+    statusLbl.textContent = `YOU GOT IT! Took ${attempts} attempts!`;
     statusLbl.style.color = "green";
     statusLbl.style.animation = "boing 0.5s ease-in-out infinite alternate";
     numberInput.style.color = "green";
+    attempts = 0;
 
 }
 
