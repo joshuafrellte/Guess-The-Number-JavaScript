@@ -13,7 +13,7 @@ let attempts = 0;
 
 let currentMax = 100;
 let randomNumber = generateRandom(currentMax);
-console.log(randomNumber);
+console.log(`Max ${currentMax}: ${randomNumber}`);
 
 darkenActiveButton(zeroToHundBtn);
 
@@ -24,10 +24,9 @@ function generateRandom(max) {
 guessBtn.onclick = function() {
     guess = numberInput.value;
     processGuess(guess);
-    if (guess != randomNumber) {
+    if (guess !== randomNumber) {
         clearGuess();
     }
-    
 }
 
 numberInput.addEventListener("keypress", function(event) {
@@ -56,8 +55,8 @@ function processGuess(guess) {
         statusLbl.textContent = "Higher!";
     }
     if (guess == randomNumber) {
-        resetGame();
         displayVictoryStatus();
+        resetGameAfterTimeout();
     }
     if (guess == '') {
         statusLbl.textContent = "Enter a guess first!";
@@ -74,16 +73,18 @@ function displayVictoryStatus() {
 
 }
 
+function resetGameAfterTimeout() {
+    setTimeout(() => {resetGame()}, 5000);
+}
+
 function resetGame() {
-    setTimeout(() => {
-        statusLbl.textContent = defaultStatus;
-        statusLbl.style.color = "black";
-        numberInput.style.color = "black";
-        statusLbl.style.animation = "none";
-        randomNumber = generateRandom(currentMax);
-        console.log(randomNumber);
-        clearGuess();
-    }, 5000);
+    statusLbl.textContent = defaultStatus;
+    statusLbl.style.color = "black";
+    numberInput.style.color = "black";
+    statusLbl.style.animation = "none";
+    randomNumber = generateRandom(currentMax);
+    console.log(randomNumber);
+    clearGuess();
 }
 
 function darkenActiveButton(btn) {
@@ -98,7 +99,7 @@ zeroToHundBtn.onclick = function() {
     currentMax = 100;
     randomNumber = generateRandom(currentMax);
     clearGuess();
-    console.log(randomNumber);
+    console.log(`Max ${currentMax}: ${randomNumber}`);
     darkenActiveButton(this);
 }
 
@@ -106,7 +107,7 @@ zeroToFiveHundBtn.onclick = function() {
     currentMax = 500;
     randomNumber = generateRandom(currentMax);
     clearGuess();
-    console.log(randomNumber);
+    console.log(`Max ${currentMax}: ${randomNumber}`);
     darkenActiveButton(this);
 }
 
@@ -114,7 +115,7 @@ zeroToThousandBtn.onclick = function() {
     currentMax = 1000;
     randomNumber = generateRandom(currentMax);
     clearGuess();
-    console.log(randomNumber);
+    console.log(`Max ${currentMax}: ${randomNumber}`);
     darkenActiveButton(this);
 }
 
@@ -122,9 +123,8 @@ zeroToTenThousandBtn.onclick = function() {
     currentMax = 10000;
     randomNumber = generateRandom(currentMax);
     clearGuess();
-    console.log(randomNumber);
+    console.log(`Max ${currentMax}: ${randomNumber}`);
     darkenActiveButton(this);
 }
 
 // fix victory animatin timings
-// add attempt counter
