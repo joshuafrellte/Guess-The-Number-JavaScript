@@ -17,10 +17,12 @@ h1 {
 #numberInput {
     font-size: 2em;
     text-align: center;
+    border-radius: 10px 10px 0 0 ;
 }
 
 #guessBtn {
     font-size: 2em;
+    border-radius: 0 0 10px 10px;
 }
 
 #statusLbl {
@@ -44,6 +46,8 @@ h1 {
     font-size: 1em;
     color: white;
     background-color: rgba(60, 138, 255, 0.599);
+    padding: 5px 10px;
+    border-radius: 5px;
     transition: 0.15s ease;
 }
 
@@ -60,5 +64,11 @@ h1 {
     #gamePanel {
         flex-direction: row;
         justify-content: center;
+    }
+    #numberInput {
+        border-radius: 10px 0 0 10px;
+    }
+    #guessBtn {
+        border-radius: 0 10px 10px 0;
     }
 }
